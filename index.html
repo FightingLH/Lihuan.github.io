@@ -328,7 +328,216 @@ kbd {
 
 <body>
 
-<p>hello world!</p>
+<div><pre><code class="language-none">           **如何安装cocoapods**</code></pre></div>
+
+<p>第一步:sudo gem update --system</p>
+
+<p>如果失败则用这条语句
+sudo gem install -n /usr/local/bin cocoapods</p>
+
+<p>如果是最新版的会出现
+Latest version currently installed. Aborting.</p>
+
+<p>如果不是会出现</p>
+
+<p>Updating rubygems-update
+Fetching: rubygems-update-2.5.0.gem (100%)
+Successfully installed rubygems-update-2.5.0
+Parsing documentation for rubygems-update-2.5.0
+Installing ri documentation for rubygems-update-2.5.0
+Installing darkfish documentation for rubygems-update-2.5.0
+Installing RubyGems 2.5.0
+RubyGems 2.5.0 installed
+Parsing documentation for rubygems-2.5.0
+Installing ri documentation for rubygems-2.5.0</p>
+
+<hr>
+
+<p>RubyGems installed the following executables:
+/System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/bin/gem</p>
+
+<p>Ruby Interactive (ri) documentation was installed. ri is kind of like man 
+pages for ruby libraries. You may access it like this:
+  ri Classname
+  ri Classname.class<em>method
+  ri Classname#instance</em>method
+If you do not wish to install this documentation in the future, use the
+--no-document flag, or set it as the default in your ~/.gemrc file. See
+&#39;gem help env&#39; for details.</p>
+
+<p>RubyGems system software updated</p>
+
+<p>第二步：移除旧的ruby</p>
+
+<p>gem sources --remove https://rubygems.org/</p>
+
+<p>成功后会出现source https://rubygems.org/ not present in cache</p>
+
+<p>第三步:安装新的</p>
+
+<p>gem sources -a https://ruby.taobao.org/
+成功后会出现https://ruby.taobao.org/ added to sources</p>
+
+<p>第四步：查看gem sources -l</p>
+
+<p>成功后会出现
+*** CURRENT SOURCES ***</p>
+
+<p>https://ruby.taobao.org/</p>
+
+<p>第五步:安装</p>
+
+<p>sudo gem install cocoapods</p>
+
+<p>失败的出现结果</p>
+
+<p>Fetching: i18n-0.7.0.gem (100%)
+Successfully installed i18n-0.7.0
+Fetching: thread<em>safe-0.3.5.gem (100%)
+Successfully installed thread</em>safe-0.3.5
+Fetching: tzinfo-1.2.2.gem (100%)
+Successfully installed tzinfo-1.2.2
+Fetching: minitest-5.8.3.gem (100%)
+Successfully installed minitest-5.8.3
+Fetching: activesupport-4.2.5.gem (100%)
+Successfully installed activesupport-4.2.5
+Fetching: nap-1.0.0.gem (100%)
+Successfully installed nap-1.0.0
+Fetching: fuzzy<em>match-2.0.4.gem (100%)
+ERROR:  While executing gem ... (Errno::EPERM)
+    Operation not permitted - /usr/bin/fuzzy</em>match
+lihuandeMac-mini:~ lihuan$ pod setup
+-bash: pod: command not found
+lihuandeMac-mini:~ lihuan$ sudo gem install cocoapods
+ERROR:  While executing gem ... (Errno::EPERM)
+    Operation not permitted - /usr/bin/fuzzy_match</p>
+
+<p>这时候我们应该采取如下安装方法</p>
+
+<p>sudo gem install -n /usr/local/bin cocoapods</p>
+
+<p>成功后会出现如下</p>
+
+<p>Successfully installed fuzzy<em>match-2.0.4
+Fetching: cocoapods-core-0.39.0.gem (100%)
+Successfully installed cocoapods-core-0.39.0
+Fetching: claide-0.9.1.gem (100%)
+Successfully installed claide-0.9.1
+Fetching: colored-1.2.gem (100%)
+Successfully installed colored-1.2
+Fetching: xcodeproj-0.28.2.gem (100%)
+Successfully installed xcodeproj-0.28.2
+Fetching: cocoapods-downloader-0.9.3.gem (100%)
+Successfully installed cocoapods-downloader-0.9.3
+Fetching: cocoapods-plugins-0.4.2.gem (100%)
+Successfully installed cocoapods-plugins-0.4.2
+Fetching: cocoapods-search-0.1.0.gem (100%)
+Successfully installed cocoapods-search-0.1.0
+Fetching: cocoapods-stats-0.6.2.gem (100%)
+Successfully installed cocoapods-stats-0.6.2
+Fetching: cocoapods-try-0.5.1.gem (100%)
+Successfully installed cocoapods-try-0.5.1
+Fetching: netrc-0.7.8.gem (100%)
+Successfully installed netrc-0.7.8
+Fetching: cocoapods-trunk-0.6.4.gem (100%)
+Successfully installed cocoapods-trunk-0.6.4
+Fetching: molinillo-0.4.0.gem (100%)
+Successfully installed molinillo-0.4.0
+Fetching: escape-0.0.4.gem (100%)
+Successfully installed escape-0.0.4
+Fetching: cocoapods-0.39.0.gem (100%)
+Successfully installed cocoapods-0.39.0
+Parsing documentation for fuzzy</em>match-2.0.4
+Installing ri documentation for fuzzy_match-2.0.4
+Parsing documentation for cocoapods-core-0.39.0
+Installing ri documentation for cocoapods-core-0.39.0
+Parsing documentation for claide-0.9.1
+Installing ri documentation for claide-0.9.1
+Parsing documentation for colored-1.2
+Installing ri documentation for colored-1.2
+Parsing documentation for xcodeproj-0.28.2
+Installing ri documentation for xcodeproj-0.28.2
+Parsing documentation for cocoapods-downloader-0.9.3
+Installing ri documentation for cocoapods-downloader-0.9.3
+Parsing documentation for cocoapods-plugins-0.4.2
+Installing ri documentation for cocoapods-plugins-0.4.2
+Parsing documentation for cocoapods-search-0.1.0
+Installing ri documentation for cocoapods-search-0.1.0
+Parsing documentation for cocoapods-stats-0.6.2
+Installing ri documentation for cocoapods-stats-0.6.2
+Parsing documentation for cocoapods-try-0.5.1
+Installing ri documentation for cocoapods-try-0.5.1
+Parsing documentation for netrc-0.7.8
+Installing ri documentation for netrc-0.7.8
+Parsing documentation for cocoapods-trunk-0.6.4
+Installing ri documentation for cocoapods-trunk-0.6.4
+Parsing documentation for molinillo-0.4.0
+Installing ri documentation for molinillo-0.4.0
+Parsing documentation for escape-0.0.4
+Installing ri documentation for escape-0.0.4
+Parsing documentation for cocoapods-0.39.0
+Installing ri documentation for cocoapods-0.39.0
+15 gems installed</p>
+
+<p>第六步:查看pod setup</p>
+
+<p>成功后会出现如下
+Setting up CocoaPods master repo</p>
+
+<p>稍等几分钟会出现如下结果</p>
+
+<p>Setup completed</p>
+
+<p>第七步:开始使用,新建一个项目并且跳转到该项目</p>
+
+<p>cd /Users/lihuan/desktop/TestPods</p>
+
+<p>之后输入vim Podfile</p>
+
+<p>然后键盘输入i </p>
+
+<p>进入编辑模式:例如下</p>
+
+<p>platform:iOS,&#39;7.0&#39;
+pod &#39;MBProgressHUD&#39;,&#39;~&gt;0.8&#39;
+platform:ios,&#39;7.0&#39;
+pod &#39;AFNetworking&#39;,&#39;~&gt;2.5&#39;</p>
+
+<p>然后输入esc :wq保存退出即可</p>
+
+<p>然后pod install</p>
+
+<p>成功出线如下结果</p>
+
+<p>Updating local specs repositories
+Analyzing dependencies
+Downloading dependencies
+Installing AFNetworking (2.6.3)</p>
+
+<p>完事</p>
+
+<p>注意：</p>
+
+<p>1.安装采用taobao的</p>
+
+<p>$ gem sources -a https://ruby.taobao.org/</p>
+
+<p>2.出现这个错误时候解决方案</p>
+
+<p>While executing gem ... (Errno::EPERM)     Operation not permitted - /usr/bin/fuzzy_match</p>
+
+<p>解决：</p>
+
+<p>sudo gem install -n /usr/local/bin cocoapods
+3.在pod setup后出现这种情况
+Setting up CocoaPods master repo</p>
+
+<p>等待下载</p>
+
+<p>Setup completed</p>
+
+<p>在更新三方库时如果存在不能更新指定版本
+pod repo remove master然后切换到你的文件目录之后pod setup pod install后在继续执行pod install解决以上问题：欢迎提供更新。</p>
 
 
 
