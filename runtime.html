@@ -334,7 +334,42 @@ runtime：运行时，俗称消息机制，对于C语言而言，函数调用在
 同时，OC在编译过程中可以调用任何函数，即使函数未实现，只有当运行的时候才会报错，但是对于C而言，则不会调用未实现的函数，调用就会报错，每一个OC的方法底层下面都会对应一个runtime方法，类似java中的虚拟机的概念。
 对应的消息转发机制调用流程:
 OC向一个对象发送消息时，runtime库会根据对象的isa指针找到该对象对应的类或者是其父类中查找方法注册方法编号，
-根据方法编号查找，找到只是最终函数实现地址，根据地址去方法区调用对应的函数，每一个对象内部都有一个isa指针，这个指针是指向他的真实类型，根据这个指针就知道将来调用哪个类的方法</code></pre></div>
+根据方法编号查找，找到只是最终函数实现地址，根据地址去方法区调用对应的函数，每一个对象内部都有一个isa指针，这个指针是指向他的真实类型，根据这个指针就知道将来调用哪个类的方法
+
+runtime作用:
+动态的交换两个方法的实现：
+当然这里不建议使用，
+有用过masonry的都知道，在实现圆角的时候并不像我们正常使用代码的时候那样方便仍需调用layoutSublayersOfLayer：
+代码示例：
++ (void)load
+{
+    SEL ori = @selector(layoutSublayersOfLayer:);
+    SEL new = NSSelectorFromString([@"test" stringByAppendingString:NSStringFromSelector(ori)]);
+    switch_Method(self, ori, new);
+}
+
+void switch_Method(Class c, SEL orig, SEL new)
+{
+    Method origMethod = class_getInstanceMethod(c, orig);
+    Method newMethod = class_getInstanceMethod(c, new);
+    
+    method_exchangeImplementations(origMethod, newMethod);
+}
+这里需要在load中实现，因此大家只需要了解即可，在使用中不建议使用
+
+动态的添加属性:
+这里的用法大家应该都比较了解，举个列子，用在分类中，分类中是无法新增属性的，因此可以使用runtime，动态的添加属性，用法如下
+- (void)setName:(NSString *)name
+{
+    objc_setAssociatedObject(self, @"name", name, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSString *)name
+{
+    return objc_getAssociatedObject(self, @"name");
+}
+
+</code></pre></div>
 
 
 
