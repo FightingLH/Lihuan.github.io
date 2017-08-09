@@ -368,6 +368,9 @@ method_exchangeImplementations(origMethod, newMethod);</code></pre></div>
 {
     return objc_getAssociatedObject(self, @&quot;name&quot;);
 }
+<p>
+实现字典转模型的自动转换:
+</p>
 如果你有看过一些模型解析应该会了解，这个用法，这里只做简单的原理说明:
 static BOOL PPValidateAndSetValue (id obj,NSString *key,id value,BOOL forceUpdate,NSError **error)
 {
@@ -451,7 +454,18 @@ for ( NSString *key in self.class.propertyKeys)
     if (!success) return NO;
 } return YES;
 }
-当然，这里面可能会复杂的多，要考虑的东西也比较多，但是原理如此</p></li>
+当然，这里面可能会复杂的多，要考虑的东西也比较多，但是原理如此</p>
+<p>
+发送消息：
+</p>
+<p>
+消息发送，当然前面已经说过了，每段OC代码底层都会对应着一个runtime，因此发送消息
+objc_msgSend(class,@selector(method:),object);
+具体实现:
+首先根据isa指针找到所属的类，
+然后找到类的cache列表，如果没有则会继续找类的方法列表        其次如果能找到与选择子名称相符的方法，就会跳转至实现代码部分，如果找不到，就沿着继承体系继续向上查找，如果能找到与选择子名称相符的方法，找不到，就会继续执行消息转发
+</p>
+</li>
 </ul>
 
 
